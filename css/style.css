@@ -392,7 +392,6 @@ body {
 }
 
 .about__text {
-  text-indent: 50px;
   color: #204969;
   font-size: 24px;
   padding: 0 0 0 30px;
@@ -589,8 +588,30 @@ body {
 }
 
 @media (max-width: 768px) {
+  .header__logo {
+    text-align: center;
+  }
+
+  .header__title {
+    text-align: center;
+  }
+
+  .header__subtitle,
+  .header__text {
+    text-align: center;
+  }
+
   .header__bottom {
     display: block;
+  }
+
+  .form {
+    text-align: center;
+  }
+
+  .form input {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .form input[type="text"] {
@@ -599,6 +620,8 @@ body {
 
   .header__list {
     padding: 10px 0 0 20px;
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   .header__list li {
@@ -653,7 +676,6 @@ body {
   .about__text {
     font-size: 18px;
     margin: 10px 0 20px 0;
-    text-indent: 30px;
   }
 
   .about__lists {
@@ -666,6 +688,25 @@ body {
 
   .list__text {
     font-size: 20px;
+  }
+}
+
+@media (max-width: 440px) {
+  .header__logo {
+    text-align: left;
+  }
+
+  .header__title {
+    text-align: left;
+  }
+
+  .header__subtitle,
+  .header__text {
+    text-align: left;
+  }
+
+  .form {
+    text-align: left;
   }
 }
 
@@ -687,13 +728,26 @@ body {
     margin: 15px 0 0 0;
   }
 
+  .header__text {
+    margin: 15px 0 0 0;
+  }
+
   .form .label-check {
-    max-width: 200px;
+    padding-left: 30px;
+    max-width: 180px;
+    line-height: 1.5;
+    text-align: center;
   }
 
   .label-check::before,
   .label-check::after {
-    top: 1px;
+    top: 5px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .label-check::after {
+    font-size: 18px;
   }
 
   .form__btn {
@@ -704,6 +758,7 @@ body {
   .about__title,
   .about__subtitle {
     font-size: 24px;
+    margin: 15px 0 0 0;
   }
 
   .about__text {
