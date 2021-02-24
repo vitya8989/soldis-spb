@@ -1415,6 +1415,38 @@ body {
   font-size: 12px;
 }
 
+.reviews__content {
+  padding: 30px 0;
+}
+
+.reviews__title {
+  font-size: 56px;
+  color: #204969;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.reviews__images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 40px -20px 0;
+}
+
+.reviews__image {
+  margin: 0 20px;
+  padding: 30px 15px;
+  border-radius: 15px;
+  border: 3px dashed #204969;
+}
+
+.reviews__image img {
+  width: 100%;
+}
+
 @media (max-width: 1400px) {
   .nav__content {
     height: 70px;
@@ -1456,6 +1488,10 @@ body {
   }
 
   .projects__title {
+    font-size: 42px;
+  }
+
+  .reviews__title {
     font-size: 42px;
   }
 }
@@ -1611,6 +1647,10 @@ body {
   .projects__title {
     font-size: 36px;
   }
+
+  .reviews__title {
+    font-size: 36px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1622,6 +1662,16 @@ body {
 @media (max-width: 800px) {
   .servises__items {
     max-width: 500px;
+  }
+
+  .reviews__images {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .reviews__image {
+    margin: 0 20px 20px;
+    border-radius: 10px;
   }
 }
 
@@ -1772,6 +1822,10 @@ body {
   }
 
   .projects__title {
+    font-size: 30px;
+  }
+
+  .reviews__title {
     font-size: 30px;
   }
 }
