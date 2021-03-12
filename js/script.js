@@ -37,3 +37,23 @@ new Swiper('.projects-slider', {
       },
    },
 });
+
+let questions = document.querySelectorAll('.questions__question');
+let answers = document.querySelectorAll('.questions__answer');
+let buttons = document.querySelectorAll('.questions__button');
+if (questions.length > 0) {
+   for (let i = 0; i < questions.length; i++) {
+      questions[i].onclick = function () {
+         for (let j = 0; j < questions.length; j++) {
+            if (answers[j] != this.nextElementSibling) {
+               answers[j].classList.remove('opened');
+            }
+            if (buttons[j] != this.lastElementChild) {
+               buttons[j].classList.remove('rotate');
+            }
+         }
+         this.nextElementSibling.classList.toggle('opened');
+         this.lastElementChild.classList.toggle('rotate');
+      }
+   }
+}
