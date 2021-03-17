@@ -47,13 +47,40 @@ if (questions.length > 0) {
          for (let j = 0; j < questions.length; j++) {
             if (answers[j] != this.nextElementSibling) {
                answers[j].classList.remove('opened');
+               answers[j].style.maxHeight = 0;
             }
             if (buttons[j] != this.lastElementChild) {
                buttons[j].classList.remove('rotate');
             }
          }
-         this.nextElementSibling.classList.toggle('opened');
+         if (this.nextElementSibling.classList.contains('opened')) {
+            this.nextElementSibling.classList.remove('opened');
+            this.nextElementSibling.style.maxHeight = 0;
+         } else {
+            this.nextElementSibling.classList.add('opened');
+            this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 'px';
+         }
          this.lastElementChild.classList.toggle('rotate');
       }
    }
+}
+
+ymaps.ready(init);
+function init() {
+   var myMap = new ymaps.Map("map", {
+      center: [59.898909, 30.265401],
+      zoom: 17
+   });
+   var placemark = new ymaps.Placemark([59.898909, 30.265401], {
+      iconCaption: 'SOLDIS GROUP',
+   }, {
+      iconColor: '#00ff00'
+   }
+   );
+   myMap.geoObjects.add(placemark);
+}
+
+if (window.innerWidth < 1025) {
+   let map = document.getElementById('map');
+   document.querySelector('.contacts__top').appendChild(map);
 }

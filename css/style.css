@@ -1502,21 +1502,15 @@ body {
 }
 
 .questions__answer {
-  opacity: 0;
-  visibility: hidden;
-  height: 0;
+  max-height: 0;
   padding: 0 70px 0 30px;
   font-size: 14px;
   line-height: 1.55;
   color: #005da9;
-  -webkit-transition: opacity 0.6s ease 0s, -webkit-transform 0.2s ease 0s;
-  transition: opacity 0.6s ease 0s, -webkit-transform 0.2s ease 0s;
-  -o-transition: transform 0.2s ease 0s, opacity 0.6s ease 0s;
-  transition: transform 0.2s ease 0s, opacity 0.6s ease 0s;
-  transition: transform 0.2s ease 0s, opacity 0.6s ease 0s, -webkit-transform 0.2s ease 0s;
-  -webkit-transform: translateY(-30%);
-      -ms-transform: translateY(-30%);
-          transform: translateY(-30%);
+  -webkit-transition: max-height 0.3s ease 0s;
+  -o-transition: max-height 0.3s ease 0s;
+  transition: max-height 0.3s ease 0s;
+  overflow: hidden;
 }
 
 .questions__answer a {
@@ -1528,13 +1522,149 @@ body {
   margin: 10px 0;
 }
 
-.questions__answer.opened {
-  visibility: visible;
-  height: auto;
-  opacity: 1;
-  -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
-          transform: translateY(0);
+.contacts {
+  background-color: #204969;
+  padding: 50px 0;
+}
+
+.contacts__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 -10px;
+}
+
+.contacts__mode,
+.contacts__map,
+.contacts__social {
+  margin: 0 10px;
+}
+
+.contacts__mode {
+  max-width: 260px;
+}
+
+.contacts__mode p {
+  color: #fff;
+  font-size: 23px;
+  line-height: 1.1;
+  letter-spacing: 2.5px;
+}
+
+.contacts__mode p:not(:last-child) {
+  margin: 10px 0 5px;
+}
+
+.contacts__mode p:last-child {
+  letter-spacing: 0;
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+.contacts__logo {
+  height: 60px;
+}
+
+.contacts__logo img {
+  height: 100%;
+}
+
+.contacts__map {
+  height: 300px;
+  background-color: #fff;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.ymaps-2-1-78-map-copyrights-promo {
+  display: none;
+}
+
+.contacts__social {
+  max-width: 350px;
+}
+
+.social p,
+.social a {
+  color: #fff;
+  font-size: 23px;
+  line-height: 1.1;
+}
+
+.social__links {
+  margin: 5px 0 5px 0;
+  height: 40px;
+}
+
+.social__links img {
+  height: 100%;
+}
+
+.social__contacts {
+  margin: 5px 0 0 0;
+}
+
+.social__contacts li {
+  margin: 10px 0;
+  padding: 5px 0 5px 40px;
+}
+
+.social__tel {
+  background: url("../img/social_tel.svg") 4px 0 no-repeat;
+}
+
+.social__mail {
+  background: url("../img/social_mail.svg") 0 center no-repeat;
+}
+
+.social__adress {
+  background: url("../img/social_map.svg") 0 center no-repeat;
+}
+
+.contacts__bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0 0 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.contacts__politic {
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.contacts__nav {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.contacts__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.contacts__link {
+  margin: 0 10px 0 10px;
+}
+
+.contacts__link a {
+  color: #fff;
+  font-size: 23px;
 }
 
 @media (min-width: 769px) {
@@ -1639,6 +1769,62 @@ body {
   .nav__link a,
   .nav__contacts a {
     font-size: 15px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .contacts {
+    padding: 40px 0;
+  }
+
+  .contacts__content {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  .contacts__row {
+    margin: 0;
+  }
+
+  .contacts__mode,
+  .contacts__map,
+  .contacts__social {
+    margin: 0;
+  }
+
+  .contacts__map {
+    margin: 20px 0 0 0;
+  }
+
+  .contacts__social {
+    max-width: none;
+    margin: 10px 0 0 20px;
+  }
+
+  .social p,
+  .social a {
+    font-size: 16px;
+  }
+
+  .social__contacts li {
+    margin: 5px 0 0 0;
+  }
+
+  .social__contacts li:first-child {
+    padding: 10px 0 10px 40px;
+  }
+
+  .contacts__bottom {
+    display: block;
+  }
+
+  .contacts__politic {
+    margin: 20px 0 0 0;
+    text-align: center;
+  }
+
+  .contacts__nav {
+    margin: 20px 0 0 0;
   }
 }
 
@@ -1844,6 +2030,40 @@ body {
   .projects-slider__next-btn {
     right: 15px;
   }
+
+  .contacts__mode {
+    max-width: 200px;
+  }
+
+  .contacts__mode p {
+    font-size: 16px;
+  }
+
+  .contacts__mode p:not(:last-child) {
+    margin: 20px 0 20px;
+  }
+
+  .contacts__mode p:last-child {
+    font-size: 16px;
+  }
+
+  .contacts__logo {
+    height: 50px;
+  }
+
+  .social__contacts li {
+    font-size: 14px;
+  }
+
+  .social__contacts li a,
+  .social__contacts li p {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .contacts__link a {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1854,6 +2074,12 @@ body {
   .questions__answer {
     font-size: 12px;
     line-height: 1.45;
+  }
+}
+
+@media (max-width: 620px) {
+  .contacts__social {
+    max-width: 250px;
   }
 }
 
@@ -1934,6 +2160,33 @@ body {
   .reviews__images {
     margin: 40px -20px 0;
   }
+
+  .contacts__row {
+    display: block;
+  }
+
+  .contacts__mode {
+    max-width: 200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contacts__mode p:not(:last-child) {
+    margin: 15px 0 10px;
+  }
+
+  .contacts__social {
+    margin: 20px auto 0 auto;
+    text-align: center;
+  }
+
+  .social__links {
+    margin: 5px 0 15px 0;
+  }
+
+  .social__contacts {
+    text-align: left;
+  }
 }
 
 @media (max-width: 460px) {
@@ -1964,6 +2217,22 @@ body {
 
   .questions__question {
     padding: 10px 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .questions__question p {
+    font-size: 16px;
+  }
+
+  .questions__button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .questions__button::before,
+  .questions__button::after {
+    width: 18px;
   }
 }
 
@@ -2068,6 +2337,10 @@ body {
 
   .services__item {
     margin: 0 20px 20px 20px;
+  }
+
+  .contacts__link a {
+    font-size: 12px;
   }
 }
 
