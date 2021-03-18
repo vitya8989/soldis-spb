@@ -84,3 +84,49 @@ if (window.innerWidth < 1025) {
    let map = document.getElementById('map');
    document.querySelector('.contacts__top').appendChild(map);
 }
+
+let burger = document.querySelector('.burger');
+let nav = document.querySelector('.nav');
+let closeButton = document.querySelector('.close__button');
+let navLinks = document.querySelectorAll('.nav__link');
+burger.onclick = function () {
+   nav.classList.add('mobile-open');
+   burger.classList.add('hide-burger');
+}
+closeButton.onclick = function () {
+   nav.classList.remove('mobile-open');
+   burger.classList.remove('hide-burger');
+}
+if (window.innerWidth < 981) {
+   for (let i = 0; i < navLinks.length; i++) {
+      navLinks[i].onclick = function () {
+         nav.classList.remove('mobile-open');
+         burger.classList.remove('hide-burger');
+      }
+   }
+}
+
+document.querySelectorAll('a[href^="#"').forEach(link => {
+
+   link.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      let href = this.getAttribute('href').substring(1);
+
+      const scrollTarget = document.getElementById(href);
+
+      let topOffset;
+      if (window.innerWidth < 981) {
+         topOffset = 0;
+      } else {
+         topOffset = document.querySelector('.nav__content').offsetHeight;
+      }
+      const elementPosition = scrollTarget.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - topOffset;
+
+      window.scrollBy({
+         top: offsetPosition,
+         behavior: 'smooth'
+      });
+   });
+});
