@@ -849,9 +849,9 @@ body {
   padding: 0 30px;
 }
 
-.container.shadow {
-  -webkit-box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7);
-          box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7);
+.nav__container {
+  max-width: 1260px;
+  margin: 0 auto;
 }
 
 .header__nav {
@@ -859,6 +859,7 @@ body {
   top: 0;
   left: 0;
   z-index: 100;
+  background: #ffffff;
 }
 
 .nav {
@@ -885,7 +886,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   height: 80px;
-  background: #ffffff;
   z-index: 1000;
   max-width: 1260px;
   padding: 0 30px;
@@ -1653,6 +1653,7 @@ body {
 
 .social__links img {
   height: 100%;
+  margin: 0 10px;
 }
 
 .social__contacts {
@@ -1959,6 +1960,11 @@ body {
   .nav__links {
     display: block;
     margin: 25px 0 25px;
+  }
+
+  .nav__link {
+    max-width: 105px;
+    margin: 0 auto;
   }
 
   .nav__link a,
@@ -2309,7 +2315,7 @@ body {
   }
 
   .social__links {
-    margin: 5px 0 15px 0;
+    margin: 15px 0 15px 0;
   }
 
   .social__contacts {
