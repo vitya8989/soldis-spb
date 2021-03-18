@@ -130,3 +130,68 @@ document.querySelectorAll('a[href^="#"').forEach(link => {
       });
    });
 });
+
+let formTel = document.getElementById('telephone');
+let formName = document.getElementById('name');
+let formCheck = document.getElementById('check');
+let labelCheck = document.querySelector('.label-check');
+function validate_form() {
+   let valid = true;
+   if (formName.value == "") {
+      valid = false;
+      formName.classList.add('error-input');
+   };
+   if (formTel.value == "+7(___)___-____") {
+      valid = false;
+      formTel.classList.add('error-input');
+   };
+   if (!formCheck.checked) {
+      valid = false;
+      labelCheck.classList.add('error-input');
+   }
+   return valid;
+};
+formName.onfocus = function () {
+   formName.classList.remove('error-input');
+}
+formTel.onfocus = function () {
+   formTel.classList.remove('error-input');
+}
+labelCheck.onclick = function () {
+   labelCheck.classList.remove('error-input');
+}
+function setCursorPosition(pos, elem) {
+   elem.focus();
+   if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
+   else if (elem.createTextRange) {
+      var range = elem.createTextRange();
+      range.collapse(true);
+      range.moveEnd("character", pos);
+      range.moveStart("character", pos);
+      range.select()
+   }
+}
+function mask(event) {
+   var matrix = this.defaultValue,
+      i = 0,
+      def = matrix.replace(/\D/g, ""),
+      val = this.value.replace(/\D/g, "");
+   def.length >= val.length && (val = def);
+   matrix = matrix.replace(/[_\d]/g, function (a) {
+      return val.charAt(i++) || "_"
+   });
+   this.value = matrix;
+   i = matrix.lastIndexOf(val.substr(-1));
+   i < matrix.length && matrix != this.defaultValue ? i++ : i = matrix.indexOf("_");
+   setCursorPosition(i, this)
+}
+formTel.addEventListener("input", mask, false);
+if (window.innerWidth > 768) {
+   let reviews = document.querySelectorAll('.reviews__image');
+   for (let i = 0; i < reviews.length; i++) {
+      reviews[i].onclick = function () {
+         reviews[i].classList.toggle('scale');
+      }
+   }
+}
+

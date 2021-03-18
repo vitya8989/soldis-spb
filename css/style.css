@@ -1097,6 +1097,13 @@ body {
   padding: 0 0 0 10px;
 }
 
+.form input[type="text"].error-input,
+.form .label-check.error-input::before {
+  border: 3px solid red;
+  -webkit-box-shadow: 0 0 10px 4px red;
+          box-shadow: 0 0 10px 4px red;
+}
+
 #check {
   display: inline;
   opacity: 0;
@@ -1461,10 +1468,37 @@ body {
 }
 
 .reviews__image {
+  position: relative;
   margin: 0 20px;
   padding: 30px 15px;
   border-radius: 15px;
   border: 1px dashed #204969;
+  -webkit-transition: -webkit-transform 0.4s ease 0s;
+  transition: -webkit-transform 0.4s ease 0s;
+  -o-transition: transform 0.4s ease 0s;
+  transition: transform 0.4s ease 0s;
+  transition: transform 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
+  background-color: #fff;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.reviews__image.scale:first-child {
+  z-index: 2;
+  -webkit-transform: scale(1.5) translateX(30%);
+      -ms-transform: scale(1.5) translateX(30%);
+          transform: scale(1.5) translateX(30%);
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
+}
+
+.reviews__image.scale:last-child {
+  z-index: 2;
+  -webkit-transform: scale(1.5) translateX(-30%);
+      -ms-transform: scale(1.5) translateX(-30%);
+          transform: scale(1.5) translateX(-30%);
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
 }
 
 .reviews__image img {
