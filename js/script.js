@@ -91,6 +91,15 @@ let nav = document.querySelector('.nav');
 let closeButton = document.querySelectorAll('.close__button');
 let navLinks = document.querySelectorAll('.nav__link');
 let wrapper = document.querySelector('.popup__wrapper');
+let popups = document.querySelectorAll('.popup');
+let openBtn = document.querySelectorAll('.item__more-btn');
+for (let i = 0; i < popups.length; i++) {
+   openBtn[i].onclick = function () {
+      wrapper.classList.add('black-wrapper');
+      popups[i].classList.add('popup-opened');
+      burger.classList.add('hide-burger');
+   }
+}
 burger.onclick = function () {
    nav.classList.add('mobile-open');
    burger.classList.add('hide-burger');
@@ -121,14 +130,6 @@ if (window.innerWidth < 981) {
          burger.classList.remove('hide-burger');
          wrapper.classList.remove('black-wrapper');
       }
-   }
-}
-let popups = document.querySelectorAll('.popup');
-let openBtn = document.querySelectorAll('.item__more-btn');
-for (let i = 0; i < popups.length; i++) {
-   openBtn[i].onclick = function () {
-      wrapper.classList.add('black-wrapper');
-      popups[i].classList.add('popup-opened');
    }
 }
 
@@ -213,12 +214,12 @@ function mask(event) {
    setCursorPosition(i, this)
 }
 formTel.addEventListener("input", mask, false);
-if (window.innerWidth > 768) {
-   let reviews = document.querySelectorAll('.reviews__image');
-   for (let i = 0; i < reviews.length; i++) {
-      reviews[i].onclick = function () {
-         reviews[i].classList.toggle('scale');
-      }
+
+let reviews = document.querySelectorAll('.reviews__image');
+for (let i = 0; i < reviews.length; i++) {
+   reviews[i].onclick = function () {
+      reviews[i].classList.toggle('scale');
    }
 }
+
 
