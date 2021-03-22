@@ -20,6 +20,7 @@ document.querySelector('body').classList.add('no-webp');
 
 new Swiper('.projects-slider', {
    spaceBetween: 40,
+   loop: true,
    navigation: {
       nextEl: '.projects-slider__next-btn',
       prevEl: '.projects-slider__prev-btn'
@@ -87,24 +88,50 @@ if (window.innerWidth < 1025) {
 
 let burger = document.querySelector('.burger');
 let nav = document.querySelector('.nav');
-let closeButton = document.querySelector('.close__button');
+let closeButton = document.querySelectorAll('.close__button');
 let navLinks = document.querySelectorAll('.nav__link');
+let wrapper = document.querySelector('.popup__wrapper');
 burger.onclick = function () {
    nav.classList.add('mobile-open');
    burger.classList.add('hide-burger');
+   wrapper.classList.add('black-wrapper');
 }
-closeButton.onclick = function () {
+for (let i = 0; i < closeButton.length; i++) {
+   closeButton[i].onclick = function () {
+      nav.classList.remove('mobile-open');
+      burger.classList.remove('hide-burger');
+      wrapper.classList.remove('black-wrapper');
+      for (let j = 0; j < popups.length; j++) {
+         popups[j].classList.remove('popup-opened');
+      }
+   }
+}
+wrapper.onclick = function () {
    nav.classList.remove('mobile-open');
    burger.classList.remove('hide-burger');
+   wrapper.classList.remove('black-wrapper');
+   for (let i = 0; i < popups.length; i++) {
+      popups[i].classList.remove('popup-opened');
+   }
 }
 if (window.innerWidth < 981) {
    for (let i = 0; i < navLinks.length; i++) {
       navLinks[i].onclick = function () {
          nav.classList.remove('mobile-open');
          burger.classList.remove('hide-burger');
+         wrapper.classList.remove('black-wrapper');
       }
    }
 }
+let popups = document.querySelectorAll('.popup');
+let openBtn = document.querySelectorAll('.item__more-btn');
+for (let i = 0; i < popups.length; i++) {
+   openBtn[i].onclick = function () {
+      wrapper.classList.add('black-wrapper');
+      popups[i].classList.add('popup-opened');
+   }
+}
+
 
 document.querySelectorAll('a[href^="#"').forEach(link => {
 
