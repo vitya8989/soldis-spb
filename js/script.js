@@ -67,8 +67,35 @@ if (questions.length > 0) {
    }
 }
 
-setTimeout(() => ymaps.ready(init), 2000);
+function yandex() {
+   var d = document;
+   var w = window;
+   function l() {
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.src = 'https://api-maps.yandex.ru/2.1/?apikey=0f32ee30-7452-48c3-8f87-18bbfd5eddac&lang=ru_RU';
+      var ss = document.getElementsByTagName('script')[0];
+      ss.parentNode.insertBefore(s, ss);
+   }
+   if (d.readyState == 'complete') {
+      l();
+   }
+   else {
+      if (w.attachEvent) {
+         w.attachEvent('onload', l);
+      }
+      else {
+         w.addEventListener('load', l, false);
+      }
+   }
+}
 
+
+
+setTimeout(yandex, 2000);
+
+
+setTimeout(() => ymaps.ready(init), 4000);
 function init() {
    var myMap = new ymaps.Map("map", {
       center: [59.898909, 30.265401],
