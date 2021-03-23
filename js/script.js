@@ -21,6 +21,7 @@ document.querySelector('body').classList.add('no-webp');
 new Swiper('.projects-slider', {
    spaceBetween: 40,
    loop: true,
+   lazy: true,
    navigation: {
       nextEl: '.projects-slider__next-btn',
       prevEl: '.projects-slider__prev-btn'
@@ -66,7 +67,8 @@ if (questions.length > 0) {
    }
 }
 
-ymaps.ready(init);
+setTimeout(() => ymaps.ready(init), 2000);
+
 function init() {
    var myMap = new ymaps.Map("map", {
       center: [59.898909, 30.265401],

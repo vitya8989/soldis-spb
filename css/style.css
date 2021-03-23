@@ -1473,7 +1473,7 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 40px auto 0;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 .reviews__image {
@@ -2016,7 +2016,7 @@ body {
   }
 
   .reviews__images {
-    max-width: 500px;
+    max-width: 600px;
   }
 
   .reviews__image {
