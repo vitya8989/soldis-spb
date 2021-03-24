@@ -152,6 +152,7 @@ for (let i = 0; i < politicBtn.length; i++) {
       politicPopup.classList.add('popup-opened');
       wrapper.classList.add('black-wrapper');
       burger.classList.add('hide-burger');
+      callbackForm.classList.remove('popup-opened');
    }
 }
 politicCloseBtn.onclick = function () {
