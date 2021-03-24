@@ -933,6 +933,16 @@ body {
   right: 50%;
 }
 
+.nav__logo .nav__link:hover::before,
+.nav__logo .nav__link:hover::after {
+  width: 0;
+  opacity: 0;
+}
+
+.nav__logo .nav__link {
+  margin: 0;
+}
+
 .nav__link a,
 .nav__contacts a {
   font-size: 16px;
@@ -1132,7 +1142,7 @@ body {
   position: relative;
 }
 
-.label-check a {
+.label-check span {
   color: #e01616;
 }
 
@@ -1742,6 +1752,7 @@ body {
 }
 
 .contacts__politic {
+  display: block;
   color: #fff;
   font-size: 10px;
   letter-spacing: 3px;
@@ -1792,7 +1803,8 @@ body {
   opacity: 0.7;
 }
 
-.popup {
+.popup,
+.politic {
   visibility: hidden;
   opacity: 0;
   -webkit-transition: all 0.4s ease 0s;
@@ -1812,7 +1824,8 @@ body {
   overflow-y: auto;
 }
 
-.popup.popup-opened {
+.popup.popup-opened,
+.politic.popup-opened {
   visibility: visible;
   opacity: 1;
 }
@@ -1872,7 +1885,7 @@ body {
 .popup__list li:before {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 8px;
   left: 7px;
   width: 7px;
   height: 7px;
@@ -1888,6 +1901,13 @@ body {
   margin: 30px 0 0 0;
   font-size: 14px;
   padding: 10px 0;
+}
+
+.politic__button {
+  display: block;
+  background: #005da9;
+  width: 280px;
+  margin: 30px auto 0;
 }
 
 @media (min-width: 769px) {
@@ -1952,7 +1972,8 @@ body {
     font-size: 42px;
   }
 
-  .popup {
+  .popup,
+  .politic {
     padding: 30px 60px 30px 20px;
     width: 90vw;
     height: 90vh;
@@ -2069,8 +2090,7 @@ body {
   }
 
   .contacts__politic {
-    margin: 20px 0 0 0;
-    text-align: center;
+    margin: 20px auto 0;
   }
 
   .contacts__nav {
@@ -2220,7 +2240,8 @@ body {
     font-size: 22px;
   }
 
-  .popup {
+  .popup,
+  .politic {
     padding: 30px 20px;
   }
 
@@ -2346,7 +2367,8 @@ body {
     background: url("../img/lupe.svg") center/100% 100% no-repeat;
   }
 
-  .popup {
+  .popup,
+  .politic {
     top: 0;
     left: 0;
     -webkit-transform: translate(0, 0);
