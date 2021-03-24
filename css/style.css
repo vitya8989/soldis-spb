@@ -1100,12 +1100,14 @@ body {
           justify-content: space-between;
 }
 
-.form input {
+.form input,
+.callback-form__form input {
   display: block;
   margin-bottom: 15px;
 }
 
-.form input[type="text"] {
+.form input[type="text"],
+.callback-form__form input[type="text"] {
   color: #000;
   border: 1px solid #204969;
   background-color: #ffffff;
@@ -1117,19 +1119,23 @@ body {
 }
 
 .form input[type="text"].error-input,
-.form .label-check.error-input::before {
+.form .label-check.error-input::before,
+.callback-form__form input[type="text"].error-input,
+.callback-form__form .label-check2.error-input::before {
   border: 3px solid red;
   -webkit-box-shadow: 0 0 10px 4px red;
           box-shadow: 0 0 10px 4px red;
 }
 
-#check {
+#check,
+#check2 {
   display: inline;
   opacity: 0;
   visibility: hidden;
 }
 
-.form label {
+.form label,
+.callback-form__form label {
   display: inline-block;
   color: #000;
   font-size: 16px;
@@ -1137,17 +1143,21 @@ body {
   cursor: pointer;
 }
 
-.form .label-check {
+.form .label-check,
+.callback-form__form .label-check2 {
   padding-left: 20px;
   position: relative;
 }
 
-.label-check span {
+.label-check span,
+.label-check2 span {
   color: #e01616;
 }
 
 .label-check::before,
-.label-check::after {
+.label-check::after,
+.label-check2::before,
+.label-check2::after {
   position: absolute;
   top: -3px;
   left: -10px;
@@ -1155,7 +1165,8 @@ body {
   height: 20px;
 }
 
-.label-check::before {
+.label-check::before,
+.label-check2::before {
   content: "";
   border: 1px solid red;
   background-color: white;
@@ -1164,11 +1175,13 @@ body {
   transition: background-color 0.3s ease 0s;
 }
 
-#check:checked + .label-check::before {
+#check:checked + .label-check::before,
+#check2:checked + .label-check2::before {
   background-color: red;
 }
 
-.label-check::after {
+.label-check::after,
+.label-check2::after {
   content: "\2714";
   font-size: 14px;
   color: white;
@@ -1804,7 +1817,8 @@ body {
 }
 
 .popup,
-.politic {
+.politic,
+.callback-form {
   visibility: hidden;
   opacity: 0;
   -webkit-transition: all 0.4s ease 0s;
@@ -1825,7 +1839,8 @@ body {
 }
 
 .popup.popup-opened,
-.politic.popup-opened {
+.politic.popup-opened,
+.callback-form.popup-opened {
   visibility: visible;
   opacity: 1;
 }
@@ -1910,6 +1925,49 @@ body {
   margin: 30px auto 0;
 }
 
+.callback-form {
+  padding: 0;
+  background: url("../img/order_bg.jpg") center/cover no-repeat;
+}
+
+.callback-form__container {
+  max-width: 430px;
+  margin: 0 auto;
+}
+
+.callback-form__title {
+  text-align: center;
+  color: #204969;
+  font-size: 40px;
+  margin: 25px 0 0 0;
+}
+
+.callback-form__form {
+  margin: 25px 0 0 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
+
+.callback-form__image {
+  width: 230px;
+  margin: 30px auto 30px;
+}
+
+.callback-form__image img {
+  width: 100%;
+}
+
+.callback-form__form .btn-center {
+  margin: 10px auto 0;
+  width: 90%;
+  height: 60px;
+}
+
+.callback-form__form input[type="text"] {
+  height: 36px;
+}
+
 @media (min-width: 769px) {
   .nav__email:hover,
   .nav__tel:hover {
@@ -1934,6 +1992,12 @@ body {
     transition: width 0.2s ease 0s;
     width: 50%;
     opacity: 1;
+  }
+}
+
+@media (max-width: 1440px) {
+  .callback-form__image {
+    margin: 30px auto;
   }
 }
 
@@ -1973,7 +2037,8 @@ body {
   }
 
   .popup,
-  .politic {
+  .politic,
+  .callback-form {
     padding: 30px 60px 30px 20px;
     width: 90vw;
     height: 90vh;
@@ -2215,11 +2280,13 @@ body {
     max-width: 800px;
   }
 
-  .form input[type="text"] {
+  .form input[type="text"],
+  .callback-form__form input[type="text"] {
     margin-bottom: 10px;
   }
 
-  .form .label-check {
+  .form .label-check,
+  .callback-form__form .label-check2 {
     font-size: 12px;
   }
 
@@ -2241,7 +2308,8 @@ body {
   }
 
   .popup,
-  .politic {
+  .politic,
+  .callback-form {
     padding: 30px 20px;
   }
 
@@ -2310,12 +2378,14 @@ body {
     text-align: center;
   }
 
-  .form input {
+  .form input,
+  .callback-form__form input {
     margin-left: auto;
     margin-right: auto;
   }
 
-  .form input[type="text"] {
+  .form input[type="text"],
+  .callback-form__form input[type="text"] {
     max-width: 400px;
   }
 
@@ -2368,7 +2438,8 @@ body {
   }
 
   .popup,
-  .politic {
+  .politic,
+  .callback-form {
     top: 0;
     left: 0;
     -webkit-transform: translate(0, 0);
@@ -2376,6 +2447,14 @@ body {
             transform: translate(0, 0);
     width: 100vw;
     height: 100vh;
+  }
+
+  .callback-form__form input[type="text"] {
+    max-width: 450px;
+  }
+
+  .callback-form__form input {
+    margin: 0 0 15px 0;
   }
 }
 
@@ -2613,6 +2692,18 @@ body {
     font-size: 12px;
     padding: 10px 0;
   }
+
+  .callback-form__title {
+    font-size: 34px;
+  }
+
+  .callback-form__form {
+    margin: 35px 0 0 0;
+  }
+
+  .callback-form__image {
+    display: none;
+  }
 }
 
 @media (max-width: 460px) {
@@ -2703,7 +2794,8 @@ body {
     margin: 15px 0 0 0;
   }
 
-  .form .label-check {
+  .form .label-check,
+  .callback-form__form .label-check2 {
     padding-left: 30px;
     max-width: 180px;
     line-height: 1.5;
@@ -2711,13 +2803,16 @@ body {
   }
 
   .label-check::before,
-  .label-check::after {
+  .label-check::after,
+  .label-check2::before,
+  .label-check2::after {
     top: 5px;
     width: 25px;
     height: 25px;
   }
 
-  .label-check::after {
+  .label-check::after,
+  .label-check2::after {
     font-size: 18px;
   }
 
@@ -2770,9 +2865,17 @@ body {
   }
 }
 
+@media (max-width: 380px) {
+  .callback-form__title {
+    font-size: 30px;
+  }
+}
+
 .webp .wrapper .header{ background: url(../img/main_bg.webp) center/cover no-repeat; }
 
 .webp .about{ background: url(../img/about_bg.webp) center 50px/contain no-repeat; }
+
+.webp .callback-form{ background: url(../img/order_bg.webp) center/cover no-repeat; }
 
 @media (max-width: 980px){
 

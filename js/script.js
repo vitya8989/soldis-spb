@@ -118,6 +118,7 @@ for (let i = 0; i < closeButton.length; i++) {
       burger.classList.remove('hide-burger');
       wrapper.classList.remove('black-wrapper');
       politicPopup.classList.remove('popup-opened');
+      callbackForm.classList.remove('popup-opened');
       for (let j = 0; j < popups.length; j++) {
          popups[j].classList.remove('popup-opened');
       }
@@ -128,6 +129,7 @@ wrapper.onclick = function () {
    burger.classList.remove('hide-burger');
    wrapper.classList.remove('black-wrapper');
    politicPopup.classList.remove('popup-opened');
+   callbackForm.classList.remove('popup-opened');
    for (let i = 0; i < popups.length; i++) {
       popups[i].classList.remove('popup-opened');
    }
@@ -156,6 +158,16 @@ politicCloseBtn.onclick = function () {
    wrapper.classList.remove('black-wrapper');
    politicPopup.classList.remove('popup-opened');
    burger.classList.remove('hide-burger');
+}
+
+let orderBtn = document.querySelectorAll('.item__order-btn');
+let callbackForm = document.querySelector('.callback-form');
+for (let i = 0; i < orderBtn.length; i++) {
+   orderBtn[i].onclick = function () {
+      callbackForm.classList.add('popup-opened');
+      wrapper.classList.add('black-wrapper');
+      burger.classList.add('hide-burger');
+   }
 }
 
 
@@ -213,6 +225,38 @@ formTel.onfocus = function () {
 labelCheck.onclick = function () {
    labelCheck.classList.remove('error-input');
 }
+
+let formTel2 = document.getElementById('telephone2');
+let formName2 = document.getElementById('name2');
+let formCheck2 = document.getElementById('check2');
+let labelCheck2 = document.querySelector('.label-check2');
+function validate_form2() {
+   let valid = true;
+   if (formName2.value == "") {
+      valid = false;
+      formName2.classList.add('error-input');
+   };
+   if (formTel2.value == "+7(___)___-____") {
+      valid = false;
+      formTel2.classList.add('error-input');
+   };
+   if (!formCheck2.checked) {
+      valid = false;
+      labelCheck2.classList.add('error-input');
+   }
+   return valid;
+};
+formName2.onfocus = function () {
+   formName2.classList.remove('error-input');
+}
+formTel2.onfocus = function () {
+   formTel2.classList.remove('error-input');
+}
+labelCheck2.onclick = function () {
+   labelCheck2.classList.remove('error-input');
+}
+
+
 function setCursorPosition(pos, elem) {
    elem.focus();
    if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
@@ -239,6 +283,7 @@ function mask(event) {
    setCursorPosition(i, this)
 }
 formTel.addEventListener("input", mask, false);
+formTel2.addEventListener("input", mask, false);
 
 let reviews = document.querySelectorAll('.reviews__image');
 for (let i = 0; i < reviews.length; i++) {
