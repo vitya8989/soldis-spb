@@ -148,20 +148,31 @@ let politicBtn = document.querySelectorAll('.politic-popup');
 let politicPopup = document.querySelector('.politic');
 let politicCloseBtn = document.querySelector('.politic__button');
 for (let i = 0; i < politicBtn.length; i++) {
-   politicBtn[i].onclick = function () {
-      politicPopup.classList.add('popup-opened');
-      wrapper.classList.add('black-wrapper');
-      burger.classList.add('hide-burger');
-      callbackForm.classList.remove('popup-opened');
+   if (politicBtn[i].classList.contains('order-politic')) {
+      politicBtn[i].onclick = function () {
+         callbackForm.classList.remove('popup-opened');
+         politicPopup.classList.add('popup-opened');
+         politicCloseBtn.onclick = function () {
+            politicPopup.classList.remove('popup-opened');
+            callbackForm.classList.add('popup-opened');
+         }
+      }
+   } else {
+      politicBtn[i].onclick = function () {
+         politicPopup.classList.add('popup-opened');
+         wrapper.classList.add('black-wrapper');
+         burger.classList.add('hide-burger');
+         politicCloseBtn.onclick = function () {
+            wrapper.classList.remove('black-wrapper');
+            politicPopup.classList.remove('popup-opened');
+            burger.classList.remove('hide-burger');
+         }
+      }
    }
 }
-politicCloseBtn.onclick = function () {
-   wrapper.classList.remove('black-wrapper');
-   politicPopup.classList.remove('popup-opened');
-   burger.classList.remove('hide-burger');
-}
 
-let orderBtn = document.querySelectorAll('.item__order-btn');
+
+let orderBtn = document.querySelectorAll('.open-order');
 let callbackForm = document.querySelector('.callback-form');
 for (let i = 0; i < orderBtn.length; i++) {
    orderBtn[i].onclick = function () {

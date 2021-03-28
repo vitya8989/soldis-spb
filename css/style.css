@@ -1030,6 +1030,7 @@ body {
   width: 40px;
   height: 40px;
   z-index: 1000;
+  cursor: pointer;
 }
 
 .close__button::before,
@@ -1642,7 +1643,7 @@ body {
 
 .questions__answer a {
   font-weight: 700;
-  color: #204969;
+  color: #005da9;
 }
 
 .questions__answer ul {
@@ -1926,13 +1927,27 @@ body {
 }
 
 .callback-form {
-  padding: 0;
   background: url("../img/order_bg.jpg") center/cover no-repeat;
+  padding: 0;
 }
 
 .callback-form__container {
   max-width: 430px;
   margin: 0 auto;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.callback-form__content {
+  padding: 10px 0 30px 0;
 }
 
 .callback-form__title {
@@ -1949,15 +1964,6 @@ body {
           flex: 1 0 auto;
 }
 
-.callback-form__image {
-  width: 230px;
-  margin: 30px auto 30px;
-}
-
-.callback-form__image img {
-  width: 100%;
-}
-
 .callback-form__form .btn-center {
   margin: 10px auto 0;
   width: 90%;
@@ -1966,6 +1972,10 @@ body {
 
 .callback-form__form input[type="text"] {
   height: 36px;
+}
+
+.open-order {
+  cursor: pointer;
 }
 
 @media (min-width: 769px) {
@@ -1992,12 +2002,6 @@ body {
     transition: width 0.2s ease 0s;
     width: 50%;
     opacity: 1;
-  }
-}
-
-@media (max-width: 1440px) {
-  .callback-form__image {
-    margin: 30px auto;
   }
 }
 
@@ -2700,10 +2704,6 @@ body {
   .callback-form__form {
     margin: 35px 0 0 0;
   }
-
-  .callback-form__image {
-    display: none;
-  }
 }
 
 @media (max-width: 460px) {
@@ -2868,6 +2868,16 @@ body {
 @media (max-width: 380px) {
   .callback-form__title {
     font-size: 30px;
+  }
+}
+
+@media (max-height: 640px) {
+  .callback-form__container {
+    display: block;
+  }
+
+  .callback-form__title {
+    margin: 0;
   }
 }
 
