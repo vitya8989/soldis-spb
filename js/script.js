@@ -238,29 +238,24 @@ labelCheck.onclick = function () {
 	labelCheck.classList.remove('error-input');
 }
 
-function submit() {
-	var request = new XMLHttpRequest();
-	request.onload = function () {
-		if (request.status == 200) {
-			alert("Thank you!");
-		} else {
-			alert("error!");
-		}
-	};
-	request.open(this.method, this.action, true);
-	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	request.send('name=' + encodeURIComponent(formName.value) + ' tel=' + encodeURIComponent(formTel.value));
-	return false;
-}
 
-form1.onsubmit = function (event) {
-	event.preventDefault();
+
+form1.onsubmit = async (e) => {
+	e.preventDefault();
 	if (validate_form()) {
-		submit();
+		let response = await fetch('../soldis-spb-main/form-action.php', {
+			method: 'POST',
+			body: new FormData(form1)
+		});
+
+		let result = await response.json();
+
+		alert(result.message);
 		formName.value = '';
 		formTel.value = '';
 	};
 };
+
 
 let formTel2 = document.getElementById('telephone2');
 let formName2 = document.getElementById('name2');
