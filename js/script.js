@@ -243,7 +243,7 @@ labelCheck.onclick = function () {
 form1.onsubmit = async (e) => {
 	e.preventDefault();
 	if (validate_form()) {
-		let response = await fetch('../soldis-spb-main/form-action.php', {
+		let response = await fetch('http://vitya8989.github.io/soldis-spb/', {
 			method: 'POST',
 			body: new FormData(form1)
 		});

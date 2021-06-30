@@ -1027,7 +1027,7 @@ body {
 .close__button {
 	position: fixed;
 	top: 15px;
-	right: 15px;
+	right: 25px;
 	width: 40px;
 	height: 40px;
 	z-index: 1000;
@@ -1399,7 +1399,7 @@ body {
 .projects__container {
 	padding: 0 170px;
 	margin: 0 auto;
-	max-width: 1400px;
+	max-width: 1200px;
 }
 
 .projects__title {
@@ -2053,7 +2053,10 @@ body {
 		width: 90vw;
 		height: 90vh;
 	}
-	.callback-form__container,
+	.callback-form__container {
+		padding: 30px 20px;
+	}
+
 	.popup__body,
 	.politic__content {
 		padding: 30px 60px 30px 20px;
@@ -2110,12 +2113,6 @@ body {
 }
 
 @media (max-width: 1024px) {
-	.projects-slider__next-btn,
-	.projects-slider__prev-btn {
-		width: 50px;
-		height: 50px;
-	}
-
 	.reviews__images {
 		max-width: 600px;
 	}
@@ -2179,6 +2176,11 @@ body {
 }
 
 @media (max-width: 1023px) {
+	.projects-slider__next-btn,
+	.projects-slider__prev-btn {
+		width: 50px;
+		height: 50px;
+	}
 	.projects__container {
 		padding: 0 90px;
 	}

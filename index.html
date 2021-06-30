@@ -70,7 +70,7 @@
 					</div>
 					<div class="header__bottom">
 						<div class="header__form form">
-							<form name="callback" class="form-1" method="post">
+							<form name="callback" action="form-action.php" class="form-1" method="post">
 								<label for="telephone">Введите номер телефона</label>
 								<input type="text" name="telephone" id="telephone" class="form__tel" value="+7(___)___-____">
 								<label for="name">Введите имя</label>
@@ -679,7 +679,7 @@
 								<span class="questions__button"></span>
 							</div>
 							<div class="questions__answer">
-								<p><b>Для расчета доставки</b> нам потребуются:</p>
+								<p><span class="open-order"><b>Для расчета доставки</b></span> нам потребуются:</p>
 								<ul>
 									<li>1)Условия поставки согласно Инкотермс (EXW, FCA, FOB и т.д.)</li>
 									<li>2) Маршрут</li>
@@ -689,7 +689,8 @@
 									<li>6) Объем груза</li>
 									<li>7) Вес брутто</li>
 								</ul>
-								<p>Дополнительно при необходимости <b>расчета стоимости таможенного оформления</b> нам
+								<p>Дополнительно при необходимости <span class="open-order"><b>расчета стоимости таможенного
+											оформления</b></span> нам
 									потребуются:</p>
 								<ul>
 									<li>1) Техническая документация на товар ( с указанием области применения, материалом
@@ -793,9 +794,13 @@
 								</div>
 								<p>Контакты</p>
 								<ul class="social__contacts">
-									<li class="social__tel"><a href="tel:8126791699">+7(812)679-16-99</a></li>
-									<li class="social__mail"><a href="mailto:stp.info@soldisgroup.com">
-											stp.info@soldisgroup.com</a></li>
+									<a href="tel:8126791699">
+										<li class="social__tel">+7(812)679-16-99</li>
+									</a>
+									<a href="mailto:stp.info@soldisgroup.com">
+										<li class="social__mail">
+											stp.info@soldisgroup.com</li>
+									</a>
 									<li class="social__adress">
 										<p>
 											ул. Промышленная, д.13, корп.5, офис 2-8 <br> г. Санкт-Петербург Россия
@@ -905,9 +910,9 @@
 							<label for="cargo-weight">Вес груза</label>
 							<input type="text" name="cargo-weight" id="cargo-weight" placeholder="100 кг">
 							<label for="cargo-from">Загрузка товара</label>
-							<input type="text" name="cargo-from" id="cargo-from" placeholder="Китай">
+							<input type="text" name="cargo-from" id="cargo-from" placeholder="Китай, Шанхай">
 							<label for="cargo-to">Выгрузка товара</label>
-							<input type="text" name="cargo-to" id="cargo-to" placeholder="Россия">
+							<input type="text" name="cargo-to" id="cargo-to" placeholder="Россия, Москва">
 							<label for="telephone2">Введите номер телефона</label>
 							<input type="text" name="telephone" id="telephone2" class="form__tel" value="+7(___)___-____">
 							<label for="name2">Введите имя</label>
