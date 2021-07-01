@@ -227,8 +227,14 @@ for (let i = 0; i < menuLinks.length; i++) {
 	offsetPositions.push(offsetPosition);
 	offsetPositionsEnd.push(offsetPositionEnd);
 }
+
 window.onscroll = function () {
-	let centerOfWindow = window.pageYOffset + window.innerHeight / 1.9;
+	let centerOfWindow;
+	if (window.innerWidth > 980) {
+		centerOfWindow = window.pageYOffset + window.innerHeight / 1.9;
+	} else {
+		centerOfWindow = window.pageYOffset + window.innerHeight / 3;
+	}
 	for (let i = 0; i <= offsetPositions.length; i++) {
 		if (centerOfWindow >= offsetPositions[i] && centerOfWindow < offsetPositionsEnd[i]) {
 			if (!menuLinks[i].classList.contains('active-anchor')) {
