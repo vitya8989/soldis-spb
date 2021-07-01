@@ -207,6 +207,42 @@ document.querySelectorAll('a[href^="#"').forEach(link => {
 		});
 	});
 });
+
+let menuLinks = document.querySelectorAll('.anchor');
+let menuAnchors = document.querySelectorAll('.menu-anchor');
+const offsetPositions = [];
+const offsetPositionsEnd = [];
+for (let i = 0; i < menuLinks.length; i++) {
+	let scrollTarget = menuAnchors[i];
+	let topOffset;
+	if (window.innerWidth < 981) {
+		topOffset = 0;
+	} else {
+		topOffset = document.querySelector('.nav__content').offsetHeight;
+	}
+	const elementPosition = scrollTarget.getBoundingClientRect().top;
+	const elementPositionEnd = elementPosition + scrollTarget.offsetHeight;
+	const offsetPosition = elementPosition - topOffset;
+	const offsetPositionEnd = elementPositionEnd - topOffset;
+	offsetPositions.push(offsetPosition);
+	offsetPositionsEnd.push(offsetPositionEnd);
+}
+window.onscroll = function () {
+	let centerOfWindow = window.pageYOffset + window.innerHeight / 1.9;
+	for (let i = 0; i <= offsetPositions.length; i++) {
+		if (centerOfWindow >= offsetPositions[i] && centerOfWindow < offsetPositionsEnd[i]) {
+			if (!menuLinks[i].classList.contains('active-anchor')) {
+				menuLinks[i].classList.add('active-anchor');
+			}
+		} else if (centerOfWindow >= offsetPositionsEnd[i] || centerOfWindow < offsetPositions[i]) {
+			menuLinks[i].classList.remove('active-anchor');
+		}
+	}
+}
+
+
+
+
 let form1 = document.querySelector('.form-1');
 let formTel = document.getElementById('telephone');
 let formName = document.getElementById('name');
@@ -322,5 +358,3 @@ for (let i = 0; i < reviews.length; i++) {
 		reviews[i].classList.toggle('scale');
 	}
 }
-
-

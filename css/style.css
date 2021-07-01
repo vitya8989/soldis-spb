@@ -934,6 +934,14 @@ body {
 	right: 50%;
 }
 
+.nav__link.active-anchor {
+	pointer-events: none;
+}
+
+.nav__link.active-anchor a {
+	color: rgba(0, 0, 0, 0.4);
+}
+
 .nav__logo .nav__link:hover::before,
 .nav__logo .nav__link:hover::after {
 	width: 0;
@@ -1986,6 +1994,17 @@ body {
 	cursor: pointer;
 }
 
+@media (min-width: 981px) {
+	.nav__link:hover::before,
+	.nav__link:hover::after {
+		-webkit-transition: -webkit-width 0.2s ease 0s;
+		-o-transition: width 0.2s ease 0s;
+		transition: width 0.2s ease 0s;
+		width: 50%;
+		opacity: 1;
+	}
+}
+
 @media (min-width: 769px) {
 	.nav__email:hover,
 	.nav__tel:hover {
@@ -1999,17 +2018,6 @@ body {
 
 	.item__order-btn:hover {
 		background: #08ffc8;
-	}
-}
-
-@media (min-width: 980px) {
-	.nav__link:hover::before,
-	.nav__link:hover::after {
-		-webkit-transition: width 0.2s ease 0s;
-		-o-transition: width 0.2s ease 0s;
-		transition: width 0.2s ease 0s;
-		width: 50%;
-		opacity: 1;
 	}
 }
 
