@@ -212,20 +212,22 @@ let menuLinks = document.querySelectorAll('.anchor');
 let menuAnchors = document.querySelectorAll('.menu-anchor');
 const offsetPositions = [];
 const offsetPositionsEnd = [];
-for (let i = 0; i < menuLinks.length; i++) {
-	let scrollTarget = menuAnchors[i];
-	let topOffset;
-	if (window.innerWidth < 981) {
-		topOffset = 0;
-	} else {
-		topOffset = document.querySelector('.nav__content').offsetHeight;
+window.onload = function () {
+	for (let i = 0; i < menuLinks.length; i++) {
+		let scrollTarget = menuAnchors[i];
+		let topOffset;
+		if (window.innerWidth < 981) {
+			topOffset = 0;
+		} else {
+			topOffset = document.querySelector('.nav__content').offsetHeight;
+		}
+		const elementPosition = scrollTarget.getBoundingClientRect().top;
+		const elementPositionEnd = elementPosition + scrollTarget.offsetHeight;
+		const offsetPosition = elementPosition - topOffset;
+		const offsetPositionEnd = elementPositionEnd - topOffset;
+		offsetPositions.push(offsetPosition);
+		offsetPositionsEnd.push(offsetPositionEnd);
 	}
-	const elementPosition = scrollTarget.getBoundingClientRect().top;
-	const elementPositionEnd = elementPosition + scrollTarget.offsetHeight;
-	const offsetPosition = elementPosition - topOffset;
-	const offsetPositionEnd = elementPositionEnd - topOffset;
-	offsetPositions.push(offsetPosition);
-	offsetPositionsEnd.push(offsetPositionEnd);
 }
 
 window.onscroll = function () {
