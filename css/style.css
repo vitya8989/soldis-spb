@@ -844,6 +844,10 @@ body {
 	background: url("../img/main_bg.png") center/cover no-repeat;
 }
 
+.scroll-lock {
+	overflow: hidden;
+}
+
 .container {
 	max-width: 1260px;
 	margin: 0 auto;
@@ -1837,7 +1841,8 @@ body {
 
 .popup,
 .politic,
-.callback-form {
+.callback-form,
+.send-popup {
 	visibility: hidden;
 	opacity: 0;
 	-webkit-transition: all 0.4s ease 0s;
@@ -1855,9 +1860,31 @@ body {
 	background-color: #fff;
 }
 
+.send-popup {
+	width: 400px;
+	height: 250px;
+	padding: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border-radius: 15px;
+}
+.send-popup p {
+	font-size: 26px;
+	margin: 20px 0 20px 0;
+}
+
+.send-popup .close__button {
+	right: 10px;
+	top: 10px;
+}
+
 .popup.popup-opened,
 .politic.popup-opened,
-.callback-form.popup-opened {
+.callback-form.popup-opened,
+.succes-popup.popup-opened,
+.mistake-popup.popup-opened {
 	visibility: visible;
 	opacity: 1;
 }
@@ -1992,6 +2019,14 @@ body {
 
 .open-order {
 	cursor: pointer;
+}
+
+.form__btn.disabled-btn {
+	background-color: rgba(128, 128, 128, 0.3);
+	pointer-events: none;
+}
+.form__btn.disabled-btn:hover {
+	background-color: rgba(128, 128, 128, 0.3);
 }
 
 @media (min-width: 981px) {
@@ -2753,6 +2788,15 @@ body {
 
 	.callback-form__form {
 		margin: 35px 0 0 0;
+	}
+	.send-popup {
+		width: 280px;
+		height: 200px;
+		padding: 20px;
+	}
+	.send-popup p {
+		font-size: 20px;
+		margin: 10px 0 10px;
 	}
 }
 

@@ -14,8 +14,11 @@
 	<meta property="og:image" content="img/logo_nav.svg">
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="css/style.css">
-	<!-- <script async="" src="https://www.google-analytics.com/analytics.js"></script>
-   <script async="" src="https://mc.yandex.ru/metrika/tag.js"></script> -->
+	<!-- Yandex.Metrika counter -->
+	<noscript>
+		<div><img src="https://mc.yandex.ru/watch/69863545" style="position:absolute; left:-9999px;" alt="" /></div>
+	</noscript>
+	<!-- /Yandex.Metrika counter -->
 </head>
 
 <body>
@@ -70,7 +73,7 @@
 					</div>
 					<div class="header__bottom">
 						<div class="header__form form">
-							<form name="callback" action="form-action.php" class="form-1" method="post">
+							<form name="callback" class="form-1" method="post">
 								<label for="telephone">Введите номер телефона</label>
 								<input type="text" name="telephone" id="telephone" class="form__tel" value="+7(___)___-____">
 								<label for="name">Введите имя</label>
@@ -903,8 +906,8 @@
 					<span class="close__button close-popup"></span>
 					<h3 class="callback-form__title">Введите данные</h3>
 					<div class="callback-form__form">
-						<form action="formBig-action.php" name="callback-big" class="form-2" method="post"
-							onsubmit="return validate_form2();" action="mailto:vitya898989@gmail.com">
+						<form name="callback-big" class="form-2" method="post" onsubmit="return validate_form2();"
+							action="mailto:vitya898989@gmail.com">
 							<label for="cargo-name">Наименование груза</label>
 							<input type="text" name="cargo-name" id="cargo-name" placeholder="Поликарбонат">
 							<label for="cargo-weight">Вес груза</label>
@@ -926,6 +929,19 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="send-popup succes-popup">
+		<div class="send-popup__content">
+			<span class="close__button close-popup close-send"></span>
+			<p>Сообщение успешно отправлено!</p>
+		</div>
+	</div>
+	<div class="send-popup mistake-popup">
+		<div class="send-popup__content">
+			<span class="close__button close-popup close-send"></span>
+			<p>Произошла ошибка отправки!</p>
+			<p>Попробуйте позже! </p>
 		</div>
 	</div>
 	<script src="js/script.js"></script>

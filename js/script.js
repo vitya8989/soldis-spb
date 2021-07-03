@@ -67,10 +67,25 @@ if (questions.length > 0) {
 	}
 }
 
-let script = document.createElement('script');
-script.src = 'https://api-maps.yandex.ru/2.1/?apikey=0f32ee30-7452-48c3-8f87-18bbfd5eddac&lang=ru_RU';
-setTimeout(() => document.head.append(script), 2000);
-script.onload = function () {
+setTimeout(function () {
+	(function (m, e, t, r, i, k, a) {
+		m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+		m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+	})
+		(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+	ym(69863545, "init", {
+		clickmap: true,
+		trackLinks: true,
+		accurateTrackBounce: true,
+		webvisor: true
+	})
+}, 1000);
+
+let scriptMap = document.createElement('script');
+scriptMap.src = 'https://api-maps.yandex.ru/2.1/?apikey=0f32ee30-7452-48c3-8f87-18bbfd5eddac&lang=ru_RU';
+setTimeout(() => document.head.append(scriptMap), 2000);
+scriptMap.onload = function () {
 	ymaps.ready(init);
 };
 
@@ -93,6 +108,10 @@ if (window.innerWidth < 1025) {
 	document.querySelector('.contacts__top').appendChild(map);
 }
 
+let wrapperBig = document.querySelector('.wrapper');
+let scrollBarWidth = window.innerWidth - wrapperBig.offsetWidth + "px";
+let body = document.body;
+let fixedHeader = document.querySelector('.header__nav');
 let burger = document.querySelector('.burger');
 let nav = document.querySelector('.nav');
 let closeButton = document.querySelectorAll('.close__button');
@@ -100,17 +119,31 @@ let navLinks = document.querySelectorAll('.nav__link');
 let wrapper = document.querySelector('.popup__wrapper');
 let popups = document.querySelectorAll('.popup');
 let openBtn = document.querySelectorAll('.item__more-btn');
+let succesPopup = document.querySelector('.succes-popup');
+let mistakePopup = document.querySelector('.mistake-popup');
+function lockPadding() {
+	body.classList.add('scroll-lock');
+	wrapperBig.style.paddingRight = scrollBarWidth;
+	fixedHeader.style.paddingRight = scrollBarWidth;
+}
+function unlockPadding() {
+	body.classList.remove('scroll-lock');
+	wrapperBig.style.paddingRight = "0";
+	fixedHeader.style.paddingRight = "0";
+}
 for (let i = 0; i < popups.length; i++) {
 	openBtn[i].onclick = function () {
 		wrapper.classList.add('black-wrapper');
 		popups[i].classList.add('popup-opened');
 		burger.classList.add('hide-burger');
+		lockPadding();
 	}
 }
 burger.onclick = function () {
 	nav.classList.add('mobile-open');
 	burger.classList.add('hide-burger');
 	wrapper.classList.add('black-wrapper');
+	lockPadding();
 }
 for (let i = 0; i < closeButton.length; i++) {
 	closeButton[i].onclick = function () {
@@ -119,9 +152,12 @@ for (let i = 0; i < closeButton.length; i++) {
 		wrapper.classList.remove('black-wrapper');
 		politicPopup.classList.remove('popup-opened');
 		callbackForm.classList.remove('popup-opened');
+		mistakePopup.classList.remove('popup-opened');
+		succesPopup.classList.remove('popup-opened');
 		for (let j = 0; j < popups.length; j++) {
 			popups[j].classList.remove('popup-opened');
 		}
+		setTimeout(unlockPadding, 300);
 	}
 }
 wrapper.onclick = function () {
@@ -130,6 +166,9 @@ wrapper.onclick = function () {
 	wrapper.classList.remove('black-wrapper');
 	politicPopup.classList.remove('popup-opened');
 	callbackForm.classList.remove('popup-opened');
+	mistakePopup.classList.remove('popup-opened');
+	succesPopup.classList.remove('popup-opened');
+	setTimeout(unlockPadding, 300);
 	for (let i = 0; i < popups.length; i++) {
 		popups[i].classList.remove('popup-opened');
 	}
@@ -140,6 +179,7 @@ if (window.innerWidth < 981) {
 			nav.classList.remove('mobile-open');
 			burger.classList.remove('hide-burger');
 			wrapper.classList.remove('black-wrapper');
+			setTimeout(unlockPadding, 300);
 		}
 	}
 }
@@ -162,10 +202,12 @@ for (let i = 0; i < politicBtn.length; i++) {
 			politicPopup.classList.add('popup-opened');
 			wrapper.classList.add('black-wrapper');
 			burger.classList.add('hide-burger');
+			lockPadding();
 			politicCloseBtn.onclick = function () {
 				wrapper.classList.remove('black-wrapper');
 				politicPopup.classList.remove('popup-opened');
 				burger.classList.remove('hide-burger');
+				setTimeout(unlockPadding, 300);
 			}
 		}
 	}
@@ -176,6 +218,7 @@ let orderBtn = document.querySelectorAll('.open-order');
 let callbackForm = document.querySelector('.callback-form');
 for (let i = 0; i < orderBtn.length; i++) {
 	orderBtn[i].onclick = function () {
+		lockPadding();
 		callbackForm.classList.add('popup-opened');
 		wrapper.classList.add('black-wrapper');
 		burger.classList.add('hide-burger');
@@ -200,7 +243,6 @@ document.querySelectorAll('a[href^="#"').forEach(link => {
 		}
 		const elementPosition = scrollTarget.getBoundingClientRect().top;
 		const offsetPosition = elementPosition - topOffset;
-
 		window.scrollBy({
 			top: offsetPosition,
 			behavior: 'smooth'
@@ -213,18 +255,18 @@ let menuAnchors = document.querySelectorAll('.menu-anchor');
 const offsetPositions = [];
 const offsetPositionsEnd = [];
 window.onload = function () {
+	let topCorrect;
+	if (window.innerWidth < 981) {
+		topCorrect = 0;
+	} else {
+		topCorrect = document.querySelector('.nav__content').offsetHeight;
+	}
 	for (let i = 0; i < menuLinks.length; i++) {
 		let scrollTarget = menuAnchors[i];
-		let topOffset;
-		if (window.innerWidth < 981) {
-			topOffset = 0;
-		} else {
-			topOffset = document.querySelector('.nav__content').offsetHeight;
-		}
-		const elementPosition = scrollTarget.getBoundingClientRect().top;
+		const elementPosition = scrollTarget.getBoundingClientRect().top + window.pageYOffset;
 		const elementPositionEnd = elementPosition + scrollTarget.offsetHeight;
-		const offsetPosition = elementPosition - topOffset;
-		const offsetPositionEnd = elementPositionEnd - topOffset;
+		const offsetPosition = elementPosition - topCorrect;
+		const offsetPositionEnd = elementPositionEnd - topCorrect;
 		offsetPositions.push(offsetPosition);
 		offsetPositionsEnd.push(offsetPositionEnd);
 	}
@@ -233,9 +275,9 @@ window.onload = function () {
 window.onscroll = function () {
 	let centerOfWindow;
 	if (window.innerWidth > 980) {
-		centerOfWindow = window.pageYOffset + window.innerHeight / 1.9;
+		centerOfWindow = window.pageYOffset + window.innerHeight / 1.85;
 	} else {
-		centerOfWindow = window.pageYOffset + window.innerHeight / 3;
+		centerOfWindow = window.pageYOffset + 50;
 	}
 	for (let i = 0; i <= offsetPositions.length; i++) {
 		if (centerOfWindow >= offsetPositions[i] && centerOfWindow < offsetPositionsEnd[i]) {
@@ -256,6 +298,7 @@ let formTel = document.getElementById('telephone');
 let formName = document.getElementById('name');
 let formCheck = document.getElementById('check');
 let labelCheck = document.querySelector('.label-check');
+let formBtns = document.querySelectorAll('.form__btn');
 function validate_form() {
 	let valid = true;
 	if (formName.value == "") {
@@ -283,24 +326,39 @@ labelCheck.onclick = function () {
 }
 
 
-
 form1.onsubmit = async (e) => {
 	e.preventDefault();
 	if (validate_form()) {
-		let response = await fetch('http://vitya8989.github.io/soldis-spb/', {
+		let response = await fetch('form-action.php', {
 			method: 'POST',
 			body: new FormData(form1)
 		});
 
-		let result = await response.json();
-
-		alert(result.message);
-		formName.value = '';
-		formTel.value = '';
+		if (responce.ok) {
+			let result = await response.json();
+			if (result.message) {
+				wrapper.classList.add('black-wrapper');
+				succesPopup.classList.add('popup-opened');
+				lockPadding();
+				form1.reset();
+				for (let btn of formBtns) {
+					btn.disabled = true;
+					btn.classList.add('disabled-btn');
+					setTimeout(function () {
+						btn.disabled = false;
+						btn.classList.remove('disabled-btn');
+					}, 10000);
+				}
+			}
+		} else {
+			mistakePopup.classList.add('popup-opened');
+			wrapper.classList.add('black-wrapper');
+			lockPadding();
+		}
 	};
 };
 
-
+let formBig = document.querySelector('.form-2');
 let formTel2 = document.getElementById('telephone2');
 let formName2 = document.getElementById('name2');
 let formCheck2 = document.getElementById('check2');
@@ -331,6 +389,37 @@ labelCheck2.onclick = function () {
 	labelCheck2.classList.remove('error-input');
 }
 
+formBig.onsubmit = async (e) => {
+	e.preventDefault();
+	if (validate_form2()) {
+		let response = await fetch('formBig-action.php', {
+			method: 'POST',
+			body: new FormData(formBig)
+		});
+
+		if (responce.ok) {
+			let result = await response.json();
+			if (result.message) {
+				wrapper.classList.add('black-wrapper');
+				succesPopup.classList.add('popup-opened');
+				lockPadding();
+				formBig.reset();
+				for (let btn of formBtns) {
+					btn.disabled = true;
+					btn.classList.add('disabled-btn');
+					setTimeout(function () {
+						btn.disabled = false;
+						btn.classList.remove('disabled-btn');
+					}, 10000);
+				}
+			}
+		} else {
+			mistakePopup.classList.add('popup-opened');
+			wrapper.classList.add('black-wrapper');
+			lockPadding();
+		}
+	};
+};
 
 function setCursorPosition(pos, elem) {
 	elem.focus();
