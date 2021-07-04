@@ -1,35 +1,19 @@
 <?
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'phpmailer/src/Exception.php';
-require 'phpmailer/src/PHPMailer.php';
-
-$mail = new PHPMailler(true);
-$mail->CharSet = 'UTF-8';
-$mail->setLanguage('ru', 'phpmailer/language/');
-$mail->IsHTML(true);
-$mail->setFrom('vitya898989@gmail.com', 'Витек');
-$mail->addAddress('vitya898989@gmail.com');
-$mail->Subject = 'Заявка на услугу перевозки';
-$body = '<h1>Заявка</h1>'ж
-if(trim(!empty($_POST['name']))) {
-	$body.='<p><strong>Имя:</strong> '.$_POST['name'].'</p>'; 
+if((isset($_POST['name']))&&(isset($_POST['telephone']))){ //Проверка отправилось ли наше поля name и не пустые ли они
+        $to = 'stp.dir@soldisgroup.com'; 
+        $subject = 'ЗАЯВКА на УСЛУГУ'; //Загаловок сообщения
+        $message = '
+                <html>
+                    <head>
+                        <title>'.$subject.'</title>
+                    </head>
+                    <body>
+                        <p>Имя: '.$_POST['name'].'</p>
+                        <p>Телефон: '.$_POST['telephone'].'</p>
+                    </body>
+                </html>'; //Текст нащего сообщения можно использовать HTML теги
+        $headers  = "Content-type: text/html; charset=utf-8 \r\n"; //Кодировка письма
+        $headers .= "stp.dir@soldisgroup.com"; //Наименование и почта отправителя
+        mail($to, $subject, $message, $headers); //Отправка письма с помощью функции mail
 }
-if(trim(!empty($_POST['telephone']))) {
-	$body.='<p><strong>Телефон:</strong> '.$_POST['telephone'].'</p>'; 
-}
-
-$mail->Body = $body;
-
-if (!$mail->send()) {
-	$message = false;
-} else {
-	$message = true;
-}
-
-$response = ['message' => $message];
-
-header('Content-type: application/json');
-echo json_encode($response);
 ?>

@@ -120,7 +120,6 @@ let wrapper = document.querySelector('.popup__wrapper');
 let popups = document.querySelectorAll('.popup');
 let openBtn = document.querySelectorAll('.item__more-btn');
 let succesPopup = document.querySelector('.succes-popup');
-let mistakePopup = document.querySelector('.mistake-popup');
 function lockPadding() {
 	body.classList.add('scroll-lock');
 	wrapperBig.style.paddingRight = scrollBarWidth;
@@ -152,7 +151,6 @@ for (let i = 0; i < closeButton.length; i++) {
 		wrapper.classList.remove('black-wrapper');
 		politicPopup.classList.remove('popup-opened');
 		callbackForm.classList.remove('popup-opened');
-		mistakePopup.classList.remove('popup-opened');
 		succesPopup.classList.remove('popup-opened');
 		for (let j = 0; j < popups.length; j++) {
 			popups[j].classList.remove('popup-opened');
@@ -166,7 +164,6 @@ wrapper.onclick = function () {
 	wrapper.classList.remove('black-wrapper');
 	politicPopup.classList.remove('popup-opened');
 	callbackForm.classList.remove('popup-opened');
-	mistakePopup.classList.remove('popup-opened');
 	succesPopup.classList.remove('popup-opened');
 	setTimeout(unlockPadding, 300);
 	for (let i = 0; i < popups.length; i++) {
@@ -333,30 +330,24 @@ form1.onsubmit = async (e) => {
 			method: 'POST',
 			body: new FormData(form1)
 		});
-
-		if (responce.ok) {
-			let result = await response.json();
-			if (result.message) {
-				wrapper.classList.add('black-wrapper');
-				succesPopup.classList.add('popup-opened');
-				lockPadding();
-				form1.reset();
-				for (let btn of formBtns) {
-					btn.disabled = true;
-					btn.classList.add('disabled-btn');
-					setTimeout(function () {
-						btn.disabled = false;
-						btn.classList.remove('disabled-btn');
-					}, 10000);
-				}
-			}
-		} else {
-			mistakePopup.classList.add('popup-opened');
-			wrapper.classList.add('black-wrapper');
-			lockPadding();
+		wrapper.classList.add('black-wrapper');
+		succesPopup.classList.add('popup-opened');
+		lockPadding();
+		form1.reset();
+		for (let btn of formBtns) {
+			btn.disabled = true;
+			btn.classList.add('disabled-btn');
+			setTimeout(function () {
+				btn.disabled = false;
+				btn.classList.remove('disabled-btn');
+			}, 10000);
 		}
-	};
+		// mistakePopup.classList.add('popup-opened');
+		// wrapper.classList.add('black-wrapper');
+		// lockPadding();
+	}
 };
+
 
 let formBig = document.querySelector('.form-2');
 let formTel2 = document.getElementById('telephone2');
@@ -396,28 +387,21 @@ formBig.onsubmit = async (e) => {
 			method: 'POST',
 			body: new FormData(formBig)
 		});
-
-		if (responce.ok) {
-			let result = await response.json();
-			if (result.message) {
-				wrapper.classList.add('black-wrapper');
-				succesPopup.classList.add('popup-opened');
-				lockPadding();
-				formBig.reset();
-				for (let btn of formBtns) {
-					btn.disabled = true;
-					btn.classList.add('disabled-btn');
-					setTimeout(function () {
-						btn.disabled = false;
-						btn.classList.remove('disabled-btn');
-					}, 10000);
-				}
-			}
-		} else {
-			mistakePopup.classList.add('popup-opened');
-			wrapper.classList.add('black-wrapper');
-			lockPadding();
+		callbackForm.classList.remove('popup-opened');
+		succesPopup.classList.add('popup-opened');
+		lockPadding();
+		formBig.reset();
+		for (let btn of formBtns) {
+			btn.disabled = true;
+			btn.classList.add('disabled-btn');
+			setTimeout(function () {
+				btn.disabled = false;
+				btn.classList.remove('disabled-btn');
+			}, 10000);
 		}
+		// mistakePopup.classList.add('popup-opened');
+		// wrapper.classList.add('black-wrapper');
+		// lockPadding();
 	};
 };
 
