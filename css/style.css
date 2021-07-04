@@ -2377,7 +2377,7 @@ body {
 		max-width: 880px;
 	}
 
-	.callback-form,
+	.callback-form__container,
 	.popup__body,
 	.politic__content {
 		padding: 30px 20px 70px;
